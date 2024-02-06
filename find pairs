@@ -1,0 +1,40 @@
+//take a sorted array from the user and integer T, print all the pair whose sum is equal to 100
+
+import java.util.Scanner;
+
+public class Main {
+    public static void Main(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length - 1;
+        
+        while (left < right) {
+            int currentSum = arr[left] + arr[right];
+            if (currentSum == target) {
+                System.out.println("Pair found: " + arr[left] + " " + arr[right]);
+                left++;
+                right--;
+            } else if (currentSum < target) {
+                left++;
+            } else {
+                right--;
+
+            }
+            
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the size of the sorted array: ");
+        int size = scanner.nextInt();
+        int[] arr = new int[size];
+        System.out.println("Enter the sorted array elements:");
+        for (int i = 0; i < size; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        System.out.print("Enter the target sum: ");
+        int target = scanner.nextInt();
+
+        Main(arr, target);
+    }
+}
